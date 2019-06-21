@@ -5,12 +5,11 @@
     <title></title>
   </head>
   <body>
+    <h1>{{ m1.actor }}</h1>
+    <h1>{{ m1.actor_movie }}</h1>
     <ul>
-      {% for a in all_movies %}
-      <li>
-        <a href="{% url 'detail' a.id %}"> {{ a.actor }}
-        </a>
-      </li>
+      {% for song in m1.song_set.all %}
+      <li>{{song.song_name}}----{{song.file_type}}</li>
       {% endfor %}
     </ul>
   </body>

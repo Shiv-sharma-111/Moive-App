@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import Movie
-from django.http import HttpResponse
+#from django.http import HttpResponse
 from django.http import Http404
 from django .template import loader
 
@@ -13,13 +13,12 @@ def index(request):
     #for a in all_movies:
         #url = '/movie1/'+ str(a.id) + '/'
         #html = '<a href = " '+ url + ' ">' + a.actor + '</a><br>'
-    return HttpResponse(template.render(context, request))
+    return render(request,'movie1/index.html',context)
 
 def detail(request, movie_id):
     #return HttpResponse("<h2>welcome in id :" + str(movie_id) + "</h2>")
     try:
         m1 = Movie.objects.get(pk=movie_id)
-    except Movie.DoesNotExist
+    except Movie.DoesNotExist:
         raise Http404("this is wrong")
-
-    return HttpResponse(template.render(context, request))
+    return render(request,'movie1/index1.html', {'m1':m1})
