@@ -8,7 +8,7 @@
     <ul>
       {% for a in all_movies %}
       <li>
-        <a href="{% url 'detail' a.id %}"> {{ a.actor }}
+        <a href="{% url 'movie1:detail' a.id %}"> {{ a.actor }}
         </a>
       </li>
       {% endfor %}

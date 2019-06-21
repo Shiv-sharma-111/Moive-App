@@ -7,10 +7,21 @@
   <body>
     <h1>{{ m1.actor }}</h1>
     <h1>{{ m1.actor_movie }}</h1>
-    <ul>
+    {% if error_message %}
+    <strong>{{ error_message }}</strong>
+    {% endif %}
+    <form class="" action="{% url 'movie1:favourite' m1.id %}" method="post">
+      {% csrf_token %}
       {% for song in m1.song_set.all %}
-      <li>{{song.song_name}}----{{song.file_type}}</li>
+      <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}" />
+      <label for="song{{ forloop.counter }}">
+        {{ song.song_name }}
+        {% if song.is_favourite %}
+         <img src="C:\Users\SHIV SHARMA\Downloads\shakti_mohan.jpg" alt=""/>
+        {% endif %}
+      </label><br>
       {% endfor %}
-    </ul>
+      <input type="submit" name="" value="favourite">
+    </form>
   </body>
 </html>
